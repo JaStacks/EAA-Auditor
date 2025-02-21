@@ -8,11 +8,7 @@ function normalizeUrl(input: string): string {
   const cleanedInput = input.replace(/^Website URL:\s*/i, "");
 
   try {
-    // Ensure input starts with http
-    if (!/^https?:\/\//i.test(cleanedInput)) {
-      throw new Error("Invalid URL: Must start with http or https");
-    }
-
+   
     // Create a URL object to normalize the structure
     const url = new URL(cleanedInput);
 
@@ -22,7 +18,7 @@ function normalizeUrl(input: string): string {
     // Remove trailing slash for consistency (except root paths)
     if (url.pathname.length > 1 && url.pathname.endsWith('/')) {
       url.pathname = url.pathname.slice(0, -1);
-    }
+    } 
 
     return url.toString();
   } catch (error) {
